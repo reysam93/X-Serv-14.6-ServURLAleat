@@ -1,11 +1,12 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from webapp import webApp
+import webapp
 import random
+import sys
 
 
-class Aleat(webApp):
+class Aleat(webapp.webApp):
     def process(self, parsedRequest):
         newURL = str(random.randint(0, 10000))
         htmlAnswer = "<html><body><p>Hola. <a href=" + newURL + ">Dame otra"
@@ -13,4 +14,7 @@ class Aleat(webApp):
         return ("200 OK", htmlAnswer)
 
 if __name__ == '__main__':
-    aleat = Aleat("localhost", 9999)
+    try:
+        aleat = Aleat("localhost", 9999)
+    except KeyboardInterrupt:
+        sys.exit()
